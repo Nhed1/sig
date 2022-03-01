@@ -16,7 +16,7 @@ export default function Login() {
             <span>Senha</span>
             <input type="password" placeholder="Digite sua senha" />
           </div>
-          <div className={styles.buttons}>
+          <div>
             <a>Esqueceu sua senha ?</a>
             <button type="submit">Entrar</button>
           </div>
