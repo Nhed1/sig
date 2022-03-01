@@ -3,8 +3,8 @@
 SISTEMA DE VISUALIZAÇÃO DE DADOS GEOGRÁFICOS SOBRE TIPOS DE DENÚNCIAS RELACIONADAS AO SANEAMENTO BÁSICO
 </h2>
 
-
+<h3>Lista de Comandos</h3>
 <ul>
-<li>`npm install` => Baixar dependencias</li>
-<li>`npm start` => Comando para iniciar o projeto</li>
+<li><strong>npm install => Baixar dependencias</strong></li>
+<li><strong>npm start => Comando para iniciar o projeto</strong></li>
 </ul>
