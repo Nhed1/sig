@@ -2,12 +2,10 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({});
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password);
+    console.log(user.email, user.password);
   };
 
   return (
@@ -20,21 +18,21 @@ export default function Login() {
           <div>
             <span>E-mail</span>
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              required
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
               type="email"
               placeholder="Digite seu email"
-              required
             />
           </div>
           <div>
             <span>Senha</span>
             <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              required
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
               type="password"
               placeholder="Digite sua senha"
-              required
             />
           </div>
           <div>
