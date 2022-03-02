@@ -8,7 +8,7 @@
   background: var(--blue-500);
 }
 
-.form {
+.content {
   position: relative;
   background-color: var(--blue-100);
   border-radius: 5px;
@@ -18,7 +18,7 @@
   height: 400px;
   width: 300px;
   margin: 0 auto;
-  text-align: center;
+  text-align: start;
 
   header {
     position: absolute;
@@ -39,28 +39,30 @@
   }
 }
 
-.inputs {
+.form {
   height: 100%;
   display: grid;
   gap: 1.2rem;
   place-content: center;
 
-  span,
-  a {
-    color: var(--white);
-  }
-
-  input,
-  button {
-    border-radius: 5px;
+  input {
     margin-top: 6px;
     height: 2rem;
     width: 16rem;
     border: none;
   }
 
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.submit {
   button {
     height: 3rem;
+    border: none;
+
     background-color: var(--blue-700);
     color: var(--white);
     transition: filter 600ms;
@@ -70,8 +72,15 @@
     filter: opacity(0.8);
   }
 
-  div {
-    display: flex;
-    flex-direction: column;
+  p {
+    color: var(--white);
+  }
+
+  span {
+    color: var(--yellow);
+    cursor: pointer;
+  }
+  span:hover {
+    text-decoration: underline;
   }
 }

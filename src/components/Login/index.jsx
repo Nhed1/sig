@@ -3,18 +3,15 @@ import styles from "./styles.module.scss";
 
 export default function Login() {
   const [user, setUser] = useState({});
-
-  const handleSubmit = (e) => {
-    console.log(user.email, user.password);
-  };
+  const [hasAccount, setHasAccount] = useState(false);
 
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form className={styles.content}>
         <header>
-          <strong>Login</strong>
+          {hasAccount ? <strong>Login</strong> : <strong>Registrar</strong>}
         </header>
-        <div className={styles.inputs}>
+        <div className={styles.form}>
           <div>
             <span>E-mail</span>
             <input
@@ -35,12 +32,23 @@ export default function Login() {
               placeholder="Digite sua senha"
             />
           </div>
-          <div>
-            <a>Esqueceu sua senha ?</a>
-            <button onClick={handleSubmit} type="submit">
-              Entrar
-            </button>
-          </div>
+          {hasAccount ? (
+            <div className={styles.submit}>
+              <button type="submit">Entrar</button>
+              <p>
+                Não possui uma conta?{" "}
+                <span onClick={() => setHasAccount(false)}>Registrar</span>
+              </p>
+            </div>
+          ) : (
+            <div className={styles.submit}>
+              <button type="submit">Registrar</button>
+              <p>
+                Já possui uma conta?{" "}
+                <span onClick={() => setHasAccount(true)}>Entrar</span>
+              </p>
+            </div>
+          )}
         </div>
       </form>
     </div>
