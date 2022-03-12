@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { login, signup, useAuth } from "../../service/firebase";
 import styles from "./styles.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const emailRef = useRef();
@@ -9,15 +10,20 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [hasAccount, setHasAccount] = useState(false);
 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    navigate("dashboard");
+  };
+
   async function handleSignup(e) {
     e.preventDefault();
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
+      routeChange();
     } catch {
       alert("Errror");
     }
-    console.log(emailRef.current.value);
     setLoading(false);
   }
 
@@ -26,6 +32,7 @@ export default function Login() {
     setLoading(true);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
+      routeChange();
     } catch {
       alert("ERROR!");
     }
