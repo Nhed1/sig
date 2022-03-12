@@ -1,18 +1,26 @@
+//react hooks
 import { useState, useRef, useEffect } from "react";
+//firabse and router
 import { login, signup, useAuth } from "../../service/firebase";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
+// toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// styles
+import styles from "./styles.module.scss";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const currentUser = useAuth();
   const [loading, setLoading] = useState(false);
-  const [hasAccount, setHasAccount] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
   const auth = getAuth();
 
   let navigate = useNavigate();
+
+  const notify = (msg) => toast.error(msg);
 
   async function handleSignup(e) {
     e.preventDefault();
@@ -21,7 +29,7 @@ export default function Login() {
       await signup(emailRef.current.value, passwordRef.current.value);
       navigate("dashboard");
     } catch {
-      alert("Errror");
+      notify("Email inválido ou senha com menos de 6 caracteres");
     }
     setLoading(false);
   }
@@ -33,7 +41,7 @@ export default function Login() {
       await login(emailRef.current.value, passwordRef.current.value);
       navigate("dashboard");
     } catch {
-      alert("ERROR!");
+      notify("Email ou senha incorretos");
     }
     setLoading(false);
   }
@@ -50,6 +58,7 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <form className={styles.content}>
         <header>
           {hasAccount ? <strong>Login</strong> : <strong>Registrar</strong>}
