@@ -1,9 +1,36 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { login, signup, useAuth } from "../../service/firebase";
 import styles from "./styles.module.scss";
 
 export default function Login() {
-  const [user, setUser] = useState({});
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const currentUser = useAuth();
+  const [loading, setLoading] = useState(false);
   const [hasAccount, setHasAccount] = useState(false);
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert("Errror");
+    }
+    console.log(emailRef.current.value);
+    setLoading(false);
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert("ERROR!");
+    }
+    setLoading(false);
+  }
 
   return (
     <div className={styles.container}>
@@ -12,12 +39,12 @@ export default function Login() {
           {hasAccount ? <strong>Login</strong> : <strong>Registrar</strong>}
         </header>
         <div className={styles.form}>
+          <h1>email:{currentUser?.email}</h1>
           <div>
             <span>E-mail</span>
             <input
               required
-              value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              ref={emailRef}
               type="email"
               placeholder="Digite seu email"
             />
@@ -26,15 +53,16 @@ export default function Login() {
             <span>Senha</span>
             <input
               required
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              ref={passwordRef}
               type="password"
               placeholder="Digite sua senha"
             />
           </div>
           {hasAccount ? (
             <div className={styles.submit}>
-              <button type="submit">Entrar</button>
+              <button disabled={loading || currentUser} onClick={handleLogin}>
+                Entrar
+              </button>
               <p>
                 Não possui uma conta?{" "}
                 <span onClick={() => setHasAccount(false)}>Registrar</span>
@@ -42,7 +70,9 @@ export default function Login() {
             </div>
           ) : (
             <div className={styles.submit}>
-              <button type="submit">Registrar</button>
+              <button disabled={loading || currentUser} onClick={handleSignup}>
+                Registrar
+              </button>
               <p>
                 Já possui uma conta?{" "}
                 <span onClick={() => setHasAccount(true)}>Entrar</span>
