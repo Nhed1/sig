@@ -1,7 +1,10 @@
+//components
 import Header from "./components/Header";
-import Login from "./components/Login";
+//pages
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+//librarys and styles
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/GlobalStyle.scss";
 
 function App() {

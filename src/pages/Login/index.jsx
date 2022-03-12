@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { login, signup, useAuth } from "../../service/firebase";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -9,18 +10,16 @@ export default function Login() {
   const currentUser = useAuth();
   const [loading, setLoading] = useState(false);
   const [hasAccount, setHasAccount] = useState(false);
+  const auth = getAuth();
 
   let navigate = useNavigate();
-  const routeChange = () => {
-    navigate("dashboard");
-  };
 
   async function handleSignup(e) {
     e.preventDefault();
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
-      routeChange();
+      navigate("dashboard");
     } catch {
       alert("Errror");
     }
@@ -32,12 +31,22 @@ export default function Login() {
     setLoading(true);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
-      routeChange();
+      navigate("dashboard");
     } catch {
       alert("ERROR!");
     }
     setLoading(false);
   }
+
+  function checkUserLoggedIn() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) navigate("dashboard");
+    });
+  }
+
+  useEffect(() => {
+    checkUserLoggedIn();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -46,7 +55,6 @@ export default function Login() {
           {hasAccount ? <strong>Login</strong> : <strong>Registrar</strong>}
         </header>
         <div className={styles.form}>
-          <h1>email:{currentUser?.email}</h1>
           <div>
             <span>E-mail</span>
             <input
