@@ -27,7 +27,6 @@ export default function Login() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
-      // navigate("dashboard");
     } catch {
       notify("Email inválido ou senha com menos de 6 caracteres");
     }
@@ -39,7 +38,6 @@ export default function Login() {
     setLoading(true);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
-      // navigate("dashboard");
     } catch {
       notify("Email ou senha incorretos");
     }
