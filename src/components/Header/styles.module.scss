@@ -1,12 +1,13 @@
 .container {
-  height: 5rem;
+  height: 3.5rem;
   background-color: var(--blue-800);
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  padding: 0 1rem;
+  justify-content: space-between;
 
   strong {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
