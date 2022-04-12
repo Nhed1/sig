@@ -7,9 +7,15 @@ import "bootstrap"; // <-- JS File
 
 export default function Header() {
   const [show, setShow] = useState(false);
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function handleActiveTab(tab) {
+    setActiveTab(tab);
+    handleClose();
+  }
 
   return (
     <header className={styles.container}>
@@ -21,7 +27,12 @@ export default function Header() {
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <button>Dashboad</button>
+          <ul>
+            <li onClick={handleActiveTab("dashboard")}>Dashboard</li>
+            <li onClick={handleActiveTab("chart")}>Gráfico</li>
+            <li onClick={handleActiveTab("map")}>Mapa</li>
+            <li onClick={handleActiveTab("settings")}>Configurações</li>
+          </ul>
         </Offcanvas.Body>
       </Offcanvas>
     </header>
