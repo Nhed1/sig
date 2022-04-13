@@ -6,6 +6,13 @@ import { Offcanvas } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap"; // <-- JS File
 
+const offCanvasStyle = {
+  backgroundColor: "var(--blue-800)",
+  color: "#fff",
+  padding: "0 20px",
+  width: "fit-content",
+};
+
 export default function Header({ activeTab, setActiveTab }) {
   const location = useLocation();
   const path = location.pathname;
@@ -27,16 +34,25 @@ export default function Header({ activeTab, setActiveTab }) {
       </button>
       <strong>SIG</strong>
       {/* out of canvas, sidebar menu */}
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas style={offCanvasStyle} show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <ul>
-            <li onClick={() => handleActiveTab("chart")}>Gráficos</li>
-            <li onClick={() => handleActiveTab("map")}>Mapa</li>
-            <li onClick={() => handleActiveTab("table")}>Tabela </li>
-            <li onClick={() => handleActiveTab("settings")}>Configurações</li>
+          <ul
+            style={{
+              listStyleType: "none",
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <button onClick={() => handleActiveTab("chart")}>Gráficos</button>
+            <button onClick={() => handleActiveTab("map")}>Mapa</button>
+            <button onClick={() => handleActiveTab("table")}>Tabela </button>
+            <button onClick={() => handleActiveTab("settings")}>
+              Configurações
+            </button>
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

@@ -21,7 +21,7 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute user={user} path="/dashboard" boolean={false}>
+            <ProtectedRoute user={user} path="/dashboard" isDashboard={false}>
               <Login />
             </ProtectedRoute>
           }
@@ -29,7 +29,7 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute user={user} path="/" boolean={true}>
+            <ProtectedRoute user={user} path="/" isDashboard={true}>
               <Dashboard activeTab={activeTab} />
             </ProtectedRoute>
           }
