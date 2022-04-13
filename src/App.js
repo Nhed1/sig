@@ -1,3 +1,4 @@
+import { useState } from "react";
 //components
 import Header from "./components/Header";
 //pages
@@ -6,16 +7,16 @@ import Dashboard from "./pages/Dashboard";
 //librarys and styles
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/GlobalStyle.scss";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./service/firebase";
 
 function App() {
   const user = useAuth();
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <Routes>
         <Route
           path="/"
@@ -29,7 +30,7 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute user={user} path="/" boolean={true}>
-              <Dashboard />
+              <Dashboard activeTab={activeTab} />
             </ProtectedRoute>
           }
         />

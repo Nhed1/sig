@@ -6,12 +6,11 @@ import { Offcanvas } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap"; // <-- JS File
 
-export default function Header() {
+export default function Header({ activeTab, setActiveTab }) {
   const location = useLocation();
   const path = location.pathname;
 
   const [show, setShow] = useState(false);
-  const [activeTab, setActiveTab] = useState("dashboard");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,9 +33,9 @@ export default function Header() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul>
-            <li onClick={() => handleActiveTab("dashboard")}>Dashboard</li>
-            <li onClick={() => handleActiveTab("chart")}>Gráfico</li>
+            <li onClick={() => handleActiveTab("chart")}>Gráficos</li>
             <li onClick={() => handleActiveTab("map")}>Mapa</li>
+            <li onClick={() => handleActiveTab("table")}>Tabela </li>
             <li onClick={() => handleActiveTab("settings")}>Configurações</li>
           </ul>
         </Offcanvas.Body>
