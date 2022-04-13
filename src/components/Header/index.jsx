@@ -28,10 +28,10 @@ export default function Header() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul>
-            <li onClick={handleActiveTab("dashboard")}>Dashboard</li>
-            <li onClick={handleActiveTab("chart")}>Gráfico</li>
-            <li onClick={handleActiveTab("map")}>Mapa</li>
-            <li onClick={handleActiveTab("settings")}>Configurações</li>
+            <li onClick={() => handleActiveTab("dashboard")}>Dashboard</li>
+            <li onClick={() => handleActiveTab("chart")}>Gráfico</li>
+            <li onClick={() => handleActiveTab("map")}>Mapa</li>
+            <li onClick={() => handleActiveTab("settings")}>Configurações</li>
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

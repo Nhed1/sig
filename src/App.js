@@ -17,11 +17,18 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute user={user} path="/dashboard" boolean={false}>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute user={user} path="/">
+            <ProtectedRoute user={user} path="/" boolean={true}>
               <Dashboard />
             </ProtectedRoute>
           }

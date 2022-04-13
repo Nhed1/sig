@@ -1,7 +1,5 @@
 import { logout } from "../../service/firebase";
-import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(false);
