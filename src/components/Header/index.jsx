@@ -34,6 +34,7 @@ export default function Header({ activeTab, setActiveTab }) {
     setLoading(true);
     try {
       await logout();
+      handleClose();
     } catch {
       alert("error!");
     }
