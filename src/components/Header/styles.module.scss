@@ -11,3 +11,19 @@
     font-size: 2rem;
   }
 }
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.tabsContainer {
+  margin-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 300px;
+}
