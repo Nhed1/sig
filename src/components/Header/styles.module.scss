@@ -7,8 +7,15 @@
   justify-content: space-between;
 
   strong {
-    color: white;
+    color: #fff;
     font-size: 2rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
   }
 }
 
@@ -16,7 +23,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
   height: 100%;
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: start;
+  }
 }
 
 .tabsContainer {

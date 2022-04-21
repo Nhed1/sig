@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { logout } from "../../service/firebase";
 
+import { AiOutlineMenu } from "react-icons/ai";
 import styles from "./styles.module.scss";
 import { Offcanvas } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -44,7 +45,7 @@ export default function Header({ activeTab, setActiveTab }) {
   return (
     <header className={styles.container}>
       <button onClick={handleShow} hidden={path === "/"}>
-        Open
+        <AiOutlineMenu />
       </button>
       <strong>SIG</strong>
       {/* out of canvas, sidebar menu */}
