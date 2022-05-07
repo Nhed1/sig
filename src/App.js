@@ -1,3 +1,4 @@
+import { useState } from "react";
 //components
 import Header from "./components/Header";
 //pages
@@ -6,7 +7,6 @@ import Dashboard from "./pages/Dashboard";
 //librarys and styles
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/GlobalStyle.scss";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./service/firebase";
 import Sidebar from "./components/SideBar/SideBar";
@@ -14,31 +14,25 @@ import Reports from "./pages/Denuncias/Reports";
 
 function App() {
   const user = useAuth();
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <Routes>
-        <Route path="/" element={<Login />} />
         <Route
-          path="/dashboard"
+          path="/"
           element={
-            <ProtectedRoute user={user} path="/">
-              <div style={{ display: "flex" }}>
-                <Sidebar />
-                <Dashboard />
-              </div>
+            <ProtectedRoute user={user} path="/dashboard" isDashboard={false}>
+              <Login />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/denuncias"
+          path="/dashboard"
           element={
-            <ProtectedRoute user={user} path="/">
-              <div style={{ display: "flex" }}>
-                <Sidebar />
-                <Reports />
-              </div>
+            <ProtectedRoute user={user} path="/" isDashboard={true}>
+              <Dashboard activeTab={activeTab} />
             </ProtectedRoute>
           }
         />
