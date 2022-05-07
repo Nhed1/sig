@@ -12,6 +12,9 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
+  MapOutlined,
+  InsertChartOutlinedSharp,
+  ReportOutlined,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -20,7 +23,7 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
+          <h3 className="sidebarTitle">Opções</h3>
           <ul className="sidebarList">
             <Link to="/" className="link">
               <li className="sidebarListItem ">
@@ -28,18 +31,24 @@ export default function Sidebar() {
                 Dashboard
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Mapa
-            </li>
 
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Gráficos
-            </li>
+            <Link to="/mapa" className="link">
+              <li className="sidebarListItem">
+                <MapOutlined className="sidebarIcon" />
+                Mapa
+              </li>
+            </Link>
+
+            <Link to="/graficos" className="link">
+              <li className="sidebarListItem">
+                <InsertChartOutlinedSharp className="sidebarIcon" />
+                Gráficos
+              </li>
+            </Link>
+
             <Link to="/denuncias" className="link">
               <li className="sidebarListItem">
-                <TrendingUp className="sidebarIcon" />
+                <ReportOutlined className="sidebarIcon" />
                 Denúncias
               </li>
             </Link>
