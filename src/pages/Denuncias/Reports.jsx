@@ -15,8 +15,8 @@ export default function Reports() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "user",
-      headerName: "User",
+      field: "name",
+      headerName: "Nome",
       width: 200,
       renderCell: (params) => {
         return (
@@ -34,14 +34,14 @@ export default function Reports() {
       width: 120,
     },
     {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      width: 160,
+      field: "tipo",
+      headerName: "Tipo de denúncia",
+      width: 200,
     },
     {
-      field: "action",
-      headerName: "Action",
-      width: 150,
+      field: "editar",
+      headerName: "Editar/Apagar",
+      width: 200,
       renderCell: (params) => {
         return (
           <>
