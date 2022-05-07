@@ -9,6 +9,7 @@ import "./styles/GlobalStyle.scss";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./service/firebase";
+import Sidebar from "./components/SideBar/SideBar";
 
 function App() {
   const user = useAuth();
@@ -22,7 +23,10 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute user={user} path="/">
-              <Dashboard />
+              <div style={{ display: "flex" }}>
+                <Sidebar />
+                <Dashboard />
+              </div>
             </ProtectedRoute>
           }
         />

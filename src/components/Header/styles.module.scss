@@ -1,12 +1,24 @@
 .container {
-  height: 5rem;
+  height: 50px;
   background-color: var(--blue-800);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 1rem;
+  padding: 10px 1rem;
 
   strong {
     color: white;
     font-size: 3rem;
   }
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.topAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 }
