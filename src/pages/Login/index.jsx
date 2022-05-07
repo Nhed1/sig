@@ -1,5 +1,5 @@
 //react hooks
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 //firabse and router
 import { login, signup, useAuth } from "../../service/firebase";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
@@ -43,6 +43,16 @@ export default function Login() {
     }
     setLoading(false);
   }
+
+  function checkUserLoggedIn() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) navigate("dashboard");
+    });
+  }
+
+  useEffect(() => {
+    checkUserLoggedIn();
+  }, []);
 
   return (
     <div className={styles.container}>

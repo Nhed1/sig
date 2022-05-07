@@ -1,33 +1,16 @@
 .container {
-<<<<<<< HEAD
   height: 50px;
-=======
-  height: 3.5rem;
->>>>>>> 87eeeba7650b817d7598bfae6a978819ff402c5b
   background-color: var(--blue-800);
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
   padding: 10px 1rem;
-=======
-  padding: 0 1rem;
-  justify-content: space-between;
->>>>>>> 87eeeba7650b817d7598bfae6a978819ff402c5b
 
   strong {
-    color: #fff;
-    font-size: 2rem;
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
+    color: white;
+    font-size: 3rem;
   }
 }
-<<<<<<< HEAD
 .user {
   display: flex;
   align-items: center;
@@ -38,31 +21,4 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-=======
-
-.navContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
-
-  button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: start;
-  }
-}
-
-.tabsContainer {
-  margin-top: 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 300px;
->>>>>>> 87eeeba7650b817d7598bfae6a978819ff402c5b
 }
