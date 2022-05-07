@@ -36,10 +36,12 @@ export default function Sidebar() {
               <TrendingUp className="sidebarIcon" />
               Gráficos
             </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Denúncias
-            </li>
+            <Link to="/denuncias" className="link">
+              <li className="sidebarListItem">
+                <TrendingUp className="sidebarIcon" />
+                Denúncias
+              </li>
+            </Link>
           </ul>
         </div>
 

@@ -10,6 +10,7 @@ import "./styles/GlobalStyle.scss";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./service/firebase";
 import Sidebar from "./components/SideBar/SideBar";
+import Reports from "./pages/Denuncias/Reports";
 
 function App() {
   const user = useAuth();
@@ -26,6 +27,17 @@ function App() {
               <div style={{ display: "flex" }}>
                 <Sidebar />
                 <Dashboard />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/denuncias"
+          element={
+            <ProtectedRoute user={user} path="/">
+              <div style={{ display: "flex" }}>
+                <Sidebar />
+                <Reports />
               </div>
             </ProtectedRoute>
           }
